@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getProduct } from "../../actions/productActions.js";
 import Loader from "../layout/Loader/loader";
+import MetaData from '../layout/MetaData.js';
 import ProductCard from "../Home/ProductCard";
 import Pagination from "react-js-pagination";
 import { Typography, Slider } from "@mui/material";
-
+import { toast} from "react-toastify";
 const categories = [
   "Laptop",
   "Footwear",
@@ -45,6 +46,7 @@ const Products = () => {
   };
 
   useEffect(() => {
+    
     dispatch(getProduct(keyword, currentPage, price, category, ratings));
   }, [dispatch, keyword, currentPage, price, category, ratings]);
 
@@ -55,6 +57,7 @@ const Products = () => {
         <Loader />
       ) : (
         <Fragment>
+          <MetaData title = "PRODUCTS == ECOMMERCE" /> 
           <h2 className="productsHeading">Products</h2>
           <div className="products">
             {products &&

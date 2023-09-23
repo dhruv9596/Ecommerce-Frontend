@@ -1,7 +1,10 @@
 import React from "react";
 import { ReactNavbar } from "overlay-navbar";
 import logo from "../../../images/logo.png";
-import search from '../../../images/Search.svg'; 
+import {MdAccountCircle } from "react-icons/md";
+import {MdSearch } from "react-icons/md";
+import {MdAddShoppingCart } from "react-icons/md";
+
 const options = {
   burgerColorHover: "#eb4034",
   logo,
@@ -25,16 +28,16 @@ const options = {
   nav4justifyContent: "flex-start",
   link1ColorHover: "#eb4034",
   link1Margin: "1vmax",
-  // searchIcon: true,
-  // SearchIconElement : search,
-  profileIconUrl: "/login",
+  profileIcon:true,
+  profileIconUrl : "/login",
   profileIconColor: "rgba(35, 35, 35,0.8)",
+  ProfileIconElement: MdAccountCircle, 
+  searchIcon:true,
   searchIconColor: "rgba(35, 35, 35,0.8)",
+  SearchIconElement:MdSearch,
+  cartIcon:true,
   cartIconColor: "rgba(35, 35, 35,0.8)",
-  profileIconColorHover: "#eb4034",
-  searchIconColorHover: "#eb4034",
-  cartIconColorHover: "#eb4034",
-  cartIconMargin: "1vmax",
+  CartIconElement:MdAddShoppingCart,
 };
 
 const Header = () => {

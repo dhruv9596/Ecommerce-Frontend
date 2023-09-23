@@ -9,7 +9,7 @@ import { useSelector , useDispatch } from 'react-redux';
 const Home = () => {
   //const alert = useAlert();
   const dispatch = useDispatch();
-  const { loading , error , products , productsCount } = useSelector( state => state.products );
+  const { loading , error , products } = useSelector( state => state.products );
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch , error]);

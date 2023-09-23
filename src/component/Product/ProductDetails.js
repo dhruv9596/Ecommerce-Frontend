@@ -7,6 +7,7 @@ import { getProductDetails, clearErrors } from "../../actions/productActions";
 import ReactStars from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/loader.js";
+import MetaData from "../layout/MetaData";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -42,6 +43,8 @@ const ProductDetails = () => {
       {loading ? (
         <Loader />
       ) : (
+        <Fragment>
+        <MetaData />
         <div>
           <div className="ProductDetails">
             <div className="div1">
@@ -113,6 +116,7 @@ const ProductDetails = () => {
             </div>
           )}
         </div>
+        </Fragment>
       )}
     </Fragment>
   );
