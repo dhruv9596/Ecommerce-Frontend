@@ -1,22 +1,24 @@
-import React, { Fragment, useRef, useState, useEffect } from "react";
+import React, { Fragment, useRef, useState, useEffect} from "react";
 import "./LoginSignUp.css";
 import Loader from "../layout/Loader/loader";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userActions";
-// import { useAlert } from "react-alert";
-
-const LoginSignUp = ({ history, location }) => {
-  const dispatch = useDispatch();
-  //const alert = useAlert();
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import FaceIcon from '@mui/icons-material/Face';
+import Profile from "../../images/Profile.png";
+// import Cookies from "js-cookie";
+const LoginSignUp = () => {
+  const dispatch = useDispatch(1);
+  const navigate =  useNavigate();
+  const location = useLocation();
+  console.log('Loc ----> ' , location)
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
-
   const loginTab = useRef(null);
   const registerTab = useRef(null);
   const switcherTab = useRef(null);
@@ -31,16 +33,17 @@ const LoginSignUp = ({ history, location }) => {
   });
 
   const { name, email, password } = user;
-
+  console.log('n , e , p ' , name , email , password );
   const [avatar, setAvatar] = useState("/Profile.png");
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
-
+  
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
   };
-
+  
   const registerSubmit = (e) => {
+    console.log('nn , ee , pp ' , name , email , password );
     e.preventDefault();
 
     const myForm = new FormData();
@@ -48,7 +51,8 @@ const LoginSignUp = ({ history, location }) => {
     myForm.set("name", name);
     myForm.set("email", email);
     myForm.set("password", password);
-    myForm.set("avatar", avatar);
+    // myForm.set("avatar", avatar);
+    console.log("MyForm ", myForm);
     dispatch(register(myForm));
   };
 
@@ -68,19 +72,22 @@ const LoginSignUp = ({ history, location }) => {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
-
-  const redirect = location?.search ? location?.search.split("=")[1] : "/account";
-
+  console.log('Location  ' , location);
+  const redirect = location?.search ? (location?.search.split("=")[1]) : "/account";
+  console.log('Redirect Url ' , redirect);
   useEffect(() => {
     if (error) {
-    //   alert.error(error);
+      
       dispatch(clearErrors());
-    }
-
+      console.log("Toast ", toast.error);
+    }    
     if (isAuthenticated) {
-      history.push(redirect);
+      toast.success("Logged In Successfully", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      navigate(redirect);
     }
-  }, [dispatch, error, alert, history, isAuthenticated, redirect]);
+  }, [dispatch, navigate,  error, isAuthenticated, redirect , location]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
@@ -145,7 +152,7 @@ const LoginSignUp = ({ history, location }) => {
                 onSubmit={registerSubmit}
               >
                 <div className="signUpName">
-                  <AccountCircleIcon/>
+                  <FaceIcon />
                   <input
                     type="text"
                     placeholder="Name"
@@ -179,7 +186,7 @@ const LoginSignUp = ({ history, location }) => {
                 </div>
 
                 <div id="registerImage">
-                  <img src={avatarPreview} alt="Avatar Preview" />
+                  <img src={Profile} alt="Avatar Preview" />
                   <input
                     type="file"
                     name="avatar"
