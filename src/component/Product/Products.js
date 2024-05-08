@@ -67,7 +67,8 @@ const Products = () => {
           </div>
 
           <div className="filterBox">
-            <Typography>Price</Typography>
+            <fieldset>
+            <Typography component="legend">Price</Typography>
             <Slider
               value={price}
               onChange={priceHandler}
@@ -76,6 +77,7 @@ const Products = () => {
               min={0}
               max={25000}
             />
+            </fieldset>
             <Typography>Categories</Typography>
             <ul className="categoriesBox">
               {categories.map((category) => (

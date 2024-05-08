@@ -92,21 +92,25 @@
     color: tomato;
 }
 
+
 .filterBox>fieldset {
     border: 1px solid rgba(0, 0, 0, 0.329);
 }
 
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     .filterBox {
         width: 20vmax;
-        position: static;
         margin: auto;
+        position : static;
+        margin-bottom: 10px;
     }
 
     .page-link {
         font: 300 1.7vmax "Roboto";
     }
-
+    /* .categoryBox{
+        justify-content: left;
+    } */
     .category-link {
         font: 400 1.8vmax "Roboto";
     }

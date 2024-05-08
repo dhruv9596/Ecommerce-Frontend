@@ -66,7 +66,7 @@ const Payment = () => {
       console.log( 'APi Cmp');
       console.log("User atr", user);
       console.log("Data ", data);
-      const client_sec = data.client_secret;
+      const client_sec = data?.client_secret;
       const client_secret = client_sec.toString();
       console.log("Client Secret ", client_secret);
       if (!stripe || !elements) return;
@@ -109,7 +109,7 @@ const Payment = () => {
       }
     } catch (error) {
       payBtn.current.disabled = false;
-      const err = error.response.data.message;
+      const err = error?.response?.data?.message;
       console.log("Err from Catch Part ", err);
       toast.error(err, {
         position: toast.POSITION.TOP_RIGHT,

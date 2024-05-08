@@ -90,7 +90,7 @@ function App() {
           <Route exact path="/cart" element={<Cart />} />
           <Route
             exact
-            path="/login/shipping"
+            path="/shipping"
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
                 <Shipping />

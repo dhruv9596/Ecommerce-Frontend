@@ -33,7 +33,12 @@ const Cart = () => {
   };
 
   const checkoutHandler = () => {
-    navigate("/login?redirect=shipping");
+    const userToken = localStorage.getItem('userToken');
+    console.log('UserTokken ' , userToken);
+      if( !userToken ){
+        navigate('/login' );
+      }
+      navigate('/shipping');
   };
 
   return (

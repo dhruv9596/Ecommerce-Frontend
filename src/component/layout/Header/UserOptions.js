@@ -55,6 +55,7 @@ const UserOptions = ({ user }) => {
   }
   function logoutUser() {
     dispatch(logout());
+    navigate("/login")
     toast.success("Logout Successfully", {
       position: toast.POSITION.TOP_RIGHT,
     });

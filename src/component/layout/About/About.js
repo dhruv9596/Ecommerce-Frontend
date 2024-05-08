@@ -3,9 +3,11 @@ import "./AboutSection.css";
 import { Button, Typography, Avatar } from "@mui/material";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
+
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 const About = () => {
   const visitInstagram = () => {
-    window.location = "https://www.instagram.com/dhruv_lodaliya/";
+    window.location = "https://www.linkedin.com/in/dhruv-lodaliya/";
   };
   return (
     <div className="aboutSection">
@@ -23,7 +25,7 @@ const About = () => {
             />
             <Typography>Dhruv Lodaliya</Typography>
             <Button onClick={visitInstagram} color="primary">
-              Visit Instagram
+              Visit LinkedIn
             </Button>
             <span>
               This is a sample wesbite made by @Dhruv_Lodaliya. Only with the
@@ -32,8 +34,8 @@ const About = () => {
           </div>
           <div className="aboutSectionContainer2">
             <Typography component="h2">Our Brands</Typography>
-            <a href="https://www.instagram.com/dhruv_lodaliya/" target="blank">
-              <InstagramIcon className="instagramSvgIcon" />
+            <a href="https://www.linkedin.com/in/dhruv-lodaliya/" target="blank">
+              <LinkedInIcon className="linkedinSvgIcon" />
             </a>
           </div>
         </div>
